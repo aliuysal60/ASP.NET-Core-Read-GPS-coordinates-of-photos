@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>
+        <title>@ViewBag.Title</title>
+
+        <h2 style="background-color: rgb(73,171,210);color: white; text-align: center; height:50px;padding-top:10px">ASP.NET Core – Google Maps API</h2>
+        <fieldset>
+            <legend style="font-family: 'Segoe UI'; color: rgb(73,171,210); font-size: large;">Fotoğraf Adresim;</legend>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+            <div id="googleMap" style="height:500px;width:100%;"></div>
+
+            <script>
+            
+                function myMap() {
+                    var myCenter = new google.maps.LatLng(@ViewBag.Lat, @ViewBag.Lon);
+                    var mapProp = { center: myCenter, zoom: 12, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.ROADMAP };
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                    var marker = new google.maps.Marker({ position: myCenter });
+                    marker.setMap(map);
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=myMap"></script>
+        </fieldset>
+        <footer>
+    <p style="background-color: rgb(73,171,210); font-weight: bold; color:white; text-align: center;height:50px; padding-top:15px">© @DateTime.Now.ToLocalTime()</p>
+    </footer></p>
+</div>
